@@ -23,11 +23,13 @@
         <TextBox x:Name="txtCommand" Margin="8,8,8,8" />
       </StackPanel>
       <Button
-          Content="Run"
           Margin="8,8,8,8" Width="96"
+          Content="Run"
           HorizontalAlignment="Left"
       />
-      <TextBox Margin="8,8,8,8" Height="320"/>
+      <TextBox x:Name="txtOutput"
+          Margin="8,8,8,8" Height="320" Text="Outputs"
+      />
     </StackPanel>
   </DockPanel>
 
