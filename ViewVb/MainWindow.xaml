@@ -7,8 +7,19 @@
     xmlns:local="clr-namespace:ViewVb"
     Title="MainWindow"
 >
-  <StackPanel Orientation="Vertical">
+  <DockPanel>
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="_File">
+        <MenuItem Header="E_xit" Click="mnuFileExit_Click" />
+      </MenuItem>
+      <MenuItem Header="_Run">
+        <MenuItem Header="Run _Command" Click="mnuRunCommand_Click" />
+      </MenuItem>
+    </Menu>
 
-  </StackPanel>
+    <StackPanel Orientation="Horizontal">
+
+    </StackPanel>
+  </DockPanel>
 
 </Window>
