@@ -17,8 +17,17 @@
       </MenuItem>
     </Menu>
 
-    <StackPanel Orientation="Horizontal">
-
+    <StackPanel Orientation="Vertical">
+      <StackPanel Orientation="Horizontal">
+        <Label Margin="8,8,8,8" Contnet="_Command :" />
+        <TextBox x:Name="txtCommand" Margin="8,8,8,8" />
+      </StackPanel>
+      <Button
+          Content="Run"
+          Margin="8,8,8,8" Width="96"
+          HorizontalAlignment="Left"
+      />
+      <TextBox Margin="8,8,8,8" Height="320"/>
     </StackPanel>
   </DockPanel>
 
