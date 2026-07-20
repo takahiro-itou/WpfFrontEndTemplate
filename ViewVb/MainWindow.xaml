@@ -19,7 +19,7 @@
 
     <StackPanel Orientation="Vertical">
       <StackPanel Orientation="Horizontal">
-        <Label Margin="8,8,8,8" Contnet="_Command :" />
+        <Label Margin="8,8,8,8" Content="_Command :" />
         <TextBox x:Name="txtCommand" Margin="8,8,8,8" />
       </StackPanel>
       <Button
