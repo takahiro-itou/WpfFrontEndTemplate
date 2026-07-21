@@ -13,12 +13,11 @@ Private Sub runCommand(ByVal command As String)
 ''--------------------------------------------------------------------
 ''    指定したコマンドを実行する。
 ''--------------------------------------------------------------------
-    txt
+
 End Sub
 
 
-Private Sub btnRun_Click(sender As Object, e As EventArgs) Handles _
-            btnRun.Click
+Private Sub btnRun_Click(ByVal sender As Object, ByVal e As EventArgs)
 ''--------------------------------------------------------------------
 ''    「実行」ボタンのクリックイベントハンドラ。
 ''
