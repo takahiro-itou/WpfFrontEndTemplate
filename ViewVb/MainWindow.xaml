@@ -26,6 +26,7 @@
           Margin="8,8,8,8" Width="96"
           Content="Run"
           HorizontalAlignment="Left"
+          Click="btnRun_Click"
       />
       <TextBox x:Name="txtOutput"
           Margin="8,8,8,8" Height="320" Text="Outputs"
