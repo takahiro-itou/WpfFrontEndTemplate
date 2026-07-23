@@ -10,10 +10,10 @@
   <DockPanel>
     <Menu DockPanel.Dock="Top">
       <MenuItem Header="_File">
-        <MenuItem Header="E_xit" Click="mnuFileExit_Click" />
+        <MenuItem Header="E_xit" />
       </MenuItem>
       <MenuItem Header="_Run">
-        <MenuItem Header="Run _Command" Click="mnuRunCommand_Click" />
+        <MenuItem Header="Run _Command" />
       </MenuItem>
     </Menu>
 
@@ -28,7 +28,6 @@
           Margin="8,8,8,8" Width="96"
           Content="Run"
           HorizontalAlignment="Left"
-          Click="btnRun_Click"
       />
       <TextBox x:Name="txtOutput"
           Margin="8,8,8,8" Height="320"
