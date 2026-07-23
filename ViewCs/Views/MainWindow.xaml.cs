@@ -1,7 +1,7 @@
 ﻿
 using System.Windows;
 
-namespace  ViewCs  {
+namespace  ViewCs.Views  {
 
 public  partial class  MainWindow : Window
 {
@@ -17,4 +17,4 @@ public  partial class  MainWindow : Window
 
 }
 
-}   //  End of namespace  ViewCs
+}   //  End of namespace  ViewCs.Views
