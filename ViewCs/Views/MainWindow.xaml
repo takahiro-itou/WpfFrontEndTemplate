@@ -7,8 +7,34 @@
     xmlns:local="clr-namespace:ViewCs"
     Title="MainWindow"
 >
-  <StackPanel Orientation="Vertical">
+  <DockPanel>
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="_File">
+        <MenuItem Header="E_xit" Click="mnuFileExit_Click" />
+      </MenuItem>
+      <MenuItem Header="_Run">
+        <MenuItem Header="Run _Command" Click="mnuRunCommand_Click" />
+      </MenuItem>
+    </Menu>
 
-  </StackPanel>
+    <StackPanel Orientation="Vertical">
+      <StackPanel Orientation="Horizontal">
+        <Label Margin="8,8,8,8" Content="_Command :" />
+        <TextBox x:Name="txtCommand"
+            Margin="8,8,8,8" Width="320"
+        />
+      </StackPanel>
+      <Button
+          Margin="8,8,8,8" Width="96"
+          Content="Run"
+          HorizontalAlignment="Left"
+          Click="btnRun_Click"
+      />
+      <TextBox x:Name="txtOutput"
+          Margin="8,8,8,8" Height="320"
+          Text="Outputs"
+      />
+    </StackPanel>
+  </DockPanel>
 
 </Window>
