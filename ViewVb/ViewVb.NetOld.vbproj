@@ -18,7 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="MainWindow.xaml.vb" />
+    <Compile Include="Models\SampleModel.vb" />
+    <Compile Include="ViewModels\SampleViewModel.vb" />
+    <Compile Include="Views\MainWindow.xaml.vb" />
   </ItemGroup>
 
 </Project>
