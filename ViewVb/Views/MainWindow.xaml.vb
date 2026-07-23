@@ -1,4 +1,6 @@
 ﻿
+Namespace Global.ViewVb.Views
+
 Public Class MainWindow
 
 Public Sub New()
@@ -60,3 +62,5 @@ End Sub
 
 
 End Class
+
+End Namespace
