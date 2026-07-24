@@ -15,6 +15,6 @@ public  partial class  MainWindow : Window
         InitializeComponent();
     }
 
-}
+}   //  End class  MainWindow
 
 }   //  End of namespace  ViewCs.Views
