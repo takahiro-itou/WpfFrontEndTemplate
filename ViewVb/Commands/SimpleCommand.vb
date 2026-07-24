@@ -22,6 +22,17 @@ Public Sub New(
 End Sub
 
 
+Public Function CanExecute(parameter As Object) As Boolean _
+        Implements IComand.CanExecute
+    Return If(m_canExecute Is Nothing, True, m_canExecute(parameter))
+End Function
+
+
+Public Sub Execute(parameter As Object) Implements ICommand.Execute
+    Me.m_execute(parameter)
+End Sub
+
+
 End Class
 
 End Namespace
