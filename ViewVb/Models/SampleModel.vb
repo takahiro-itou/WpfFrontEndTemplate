@@ -1,4 +1,4 @@
-
+﻿
 Namespace Global.ViewVb.Models
 
 Public Class SampleModel
