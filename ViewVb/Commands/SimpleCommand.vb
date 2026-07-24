@@ -33,6 +33,15 @@ Public Sub Execute(parameter As Object) Implements ICommand.Execute
 End Sub
 
 
+Public Event CanExecuteChanged As EventHandler _
+        Implements ICommand.CanExecuteChanged
+
+
+Public Sub raiseCanExecuteChanged())
+    RaiseEvent CanExecuteChanged(Me, EventArgs.Empty)
+End Sub
+
+
 End Class
 
 End Namespace
