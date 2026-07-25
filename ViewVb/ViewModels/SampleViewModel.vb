@@ -1,7 +1,7 @@
 ﻿
 Imports System.ComponentModel
 Imports System.Runtime.CompilerServices
-Imports System.Treateding.Tasks
+Imports System.Thrading.Tasks
 Imports System.Windows.Input
 
 Imports ViewVb.Commands
@@ -22,7 +22,7 @@ Public Sub New(ByVal model As SampleModel)
     Me.m_progress = New System.Progress(Of Integer)(AddressOf updateProgress)
     Me.m_trgModel = model
 
-    Me.m_runTaskCommand = New SimpleCommand(
+    Me.m_runModelTaskCommand = New SimpleCommand(
         Sub(ByVal parameter As Object)
             Me.runModelTaskAsync
         End Sub,
@@ -60,6 +60,13 @@ Public Property ReturnCode() As Integer
     Private Set(ByVal value As Integer)
         Me.m_returnCode = value
     End Set
+End Property
+
+
+Public Overridable ReadOnly Property RunModelTaskCommand() As ICommand
+    Get
+        Return  Me.m_runModelTaskCommand
+    End Get
 End Property
 
 
@@ -118,7 +125,7 @@ End Sub
 Private ReadOnly m_progress As System.IProgress(Of Integer)
 Private ReadOnly m_trgModel As SampleModel
 
-Private ReadOnly m_runTaskCommand As SimpleCommand
+Private ReadOnly m_runModelTaskCommand As SimpleCommand
 
 Private m_returnCode As Integer
 

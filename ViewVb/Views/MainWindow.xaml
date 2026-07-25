@@ -13,7 +13,8 @@
         <MenuItem Header="E_xit" Click="mnuFileExit_Click" />
       </MenuItem>
       <MenuItem Header="_Run">
-        <MenuItem Header="Run _Command" Click="mnuRunCommand_Click" />
+        <MenuItem Header="Run _Command"
+          Command="{Binding RunModelTaskCommand}"
       </MenuItem>
     </Menu>
 
@@ -29,6 +30,7 @@
           Content="Run"
           HorizontalAlignment="Left"
           Click="btnRun_Click"
+          Command="{Binding RunModelTaskCommand}"
       />
       <TextBox x:Name="txtOutput"
           Margin="8,8,8,8" Height="320"

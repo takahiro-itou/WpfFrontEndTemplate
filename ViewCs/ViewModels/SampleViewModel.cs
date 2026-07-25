@@ -28,7 +28,7 @@ public  class  SampleViewModel : INotifyPropertyChanged
         this.m_progress = new System.Progress<int>(updateProgress);
         this.m_trgModel = model;
 
-        this.m_runTaskCommand   = new SimpleCommand(
+        this.m_runModelTaskCommand  = new SimpleCommand(
                 _ => runModelTaskAsync(), _ => canRunTask() );
         this.m_returnCode   = 0;
     }
@@ -61,6 +61,15 @@ public  class  SampleViewModel : INotifyPropertyChanged
         }
     }
 
+
+    //----------------------------------------------------------------
+    /**   タスクを実行するコマンドを取得するプロパティ。
+    **
+    **/
+    public  virtual  ICommand
+    RunModelTaskCommand {
+        get { return  this.m_runModelTaskCommand; }
+    }
 
 //========================================================================
 //
@@ -128,7 +137,7 @@ public  class  SampleViewModel : INotifyPropertyChanged
     private  readonly   System.IProgress<int>   m_progress;
     private  readonly   SampleModel             m_trgModel;
 
-    private  readonly   SimpleCommand           m_runTaskCommand;
+    private  readonly   SimpleCommand           m_runModelTaskCommand;
 
     private  int    m_returnCode;
 
