@@ -1,4 +1,7 @@
 ﻿
+Imports System
+
+
 Namespace Global.ViewVb.Models
 
 Public Class SampleModel
@@ -10,7 +13,7 @@ Public Property ResultText() As String
    Get
        Return  Me.m_resultText
    End Get
-   Set(ByVal value As Strign)
+   Set(ByVal value As String)
        Me.m_resultText = value
    End Set
 End Property
@@ -31,7 +34,7 @@ Protected Overridable Sub executeCommand()
 ''    指定したコマンドを実行する
 ''--------------------------------------------------------------------
     Me.ResultText = "Hello, World"
-    System.Threading.Thread.Sleep(5000);
+    System.Threading.Thread.Sleep(5000)
 End Sub
 
 

@@ -1,4 +1,7 @@
 ﻿
+using System;
+
+
 namespace  ViewCs.Models  {
 
 public  class  SampleModel
