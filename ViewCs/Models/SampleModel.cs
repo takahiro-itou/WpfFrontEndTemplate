@@ -32,9 +32,16 @@ public  class  SampleModel
     **
     **/
     public  virtual  int
-    runTask(IProgress<int>  progress)
+    executeCommand(IProgress<int>  progress)
     {
-        executeCommand();
+        string  output = "Hello, World";
+        for ( int i = 0; i < output.Length; ++ i ) {
+            Me.ResultText += text[i];
+            progress.Report(0);
+            System.Threading.Thread.Sleep(1000);
+        }
+
+        progress.Report(100);
         return ( 0 );
     }
 
@@ -55,18 +62,6 @@ public  class  SampleModel
 //
 //    Protected Member Functions.
 //
-
-    //----------------------------------------------------------------
-    /**   指定したコマンドを実行する。
-    **
-    **/
-    protected  virtual  void
-    executeCommand()
-    {
-        this.ResultText = "Hello, World";
-        System.Threading.Thread.Sleep(5000);
-    }
-
 
 //========================================================================
 //
