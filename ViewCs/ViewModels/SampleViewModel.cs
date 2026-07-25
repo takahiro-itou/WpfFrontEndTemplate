@@ -23,16 +23,18 @@ public  class  SampleViewModel : INotifyPropertyChanged
     public SampleViewModel(
             SampleModel model)
     {
+        this.m_progress = new Progress<int>(updateProgress);
         this.m_trgModel = model;
 
         this.m_runTaskCommand   = new SimpleCommand(
                 _ => runModelTaskAsync(), _ => canRunTask() );
+        this.m_returnCode   = 0;
     }
 
 
 //========================================================================
 //
-//    Public Properties (Implement Interface).
+//    Public Properties.
 //
 
     //----------------------------------------------------------------
@@ -40,6 +42,22 @@ public  class  SampleViewModel : INotifyPropertyChanged
     **
     **/
     public  event PropertyChangedEventHandler?  PropertyChanged;
+
+    public  string
+    ResultText  {
+        get { return  this.m_trgModel.ResultText; }
+        set { this.m_trgModel.ResultText = value; }
+    }
+
+    public  int
+    ReturnCode  {
+        get {
+            return  this.m_returnCode;
+        }
+        private set {
+            this.m_returnCode = value;
+        }
+    }
 
 
 //========================================================================
@@ -58,12 +76,17 @@ public  class  SampleViewModel : INotifyPropertyChanged
     }
 
     //----------------------------------------------------------------
-    /**
+    /**   モデルのタスクを非同期で実行する。
     **
     **/
     public  async  void
     runModelTaskAsync()
     {
+        Task<int>  task = Task.Run<int>(
+            () => this.m_trgModel.runTask(this.m_progress));
+        int  result = await task;
+        this.ReturnCode = result;
+        this.ResultText = this.m_trgModel.ResultText;
     }
 
 
@@ -85,12 +108,27 @@ public  class  SampleViewModel : INotifyPropertyChanged
     }
 
 
+    //----------------------------------------------------------------
+    /**
+    **
+    **/
+    protected  virtual  void
+    updateProgress(int progressValue)
+    {
+    }
+
+
 //========================================================================
 //
 //    Member Variables.
 //
 
+    private  readonly   IProgress<int>  m_progress;
     private  readonly   SampleModel     m_trgModel;
+
+    private  readonly   SimpleCommand   m_runTaskCommand;
+
+    private  int    m_returnCode;
 
 }   //  End class  SampleViewModel
 
