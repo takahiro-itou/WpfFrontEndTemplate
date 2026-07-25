@@ -36,7 +36,7 @@ public  class  SampleModel
     {
         string  output = "Hello, World";
         for ( int i = 0; i < output.Length; ++ i ) {
-            Me.ResultText += text[i];
+            this.ResultText += output[i];
             progress.Report(0);
             System.Threading.Thread.Sleep(1000);
         }

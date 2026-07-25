@@ -133,7 +133,7 @@ public  class  SampleViewModel : INotifyPropertyChanged
         this.IsRunning  = true;
 
         Task<int>  task = Task.Run<int>(
-            () => this.m_trgModel.runTask(this.m_progress));
+            () => this.m_trgModel.executeCommand(this.m_progress));
         int  result = await task;
 
         this.ReturnCode = result;

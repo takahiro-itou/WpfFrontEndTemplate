@@ -36,7 +36,7 @@ Dim output As String
     Next i
 
     progress.Report(100)
-    runTask = 0
+    executeCommand = 0
 End Function
 
 

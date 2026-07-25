@@ -136,7 +136,7 @@ Dim myTask As Task(Of Integer)
 
     mytask = Task.Run(Of Integer)(
         Function() As Integer
-            Return  Me.m_trgModel.runTask(Me.m_progress)
+            Return  Me.m_trgModel.executeCommand(Me.m_progress)
         End Function
     )
     result  = await mytask
