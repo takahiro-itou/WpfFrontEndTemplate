@@ -59,6 +59,7 @@ public  class  SampleViewModel : INotifyPropertyChanged
         private set {
             this.m_isRunning = value;
             raisePropertyChanged();
+            raiseCanExecuteChanged();
         }
     }
 
@@ -145,6 +146,17 @@ public  class  SampleViewModel : INotifyPropertyChanged
 //
 //    Protected Member Functions.
 //
+
+    //----------------------------------------------------------------
+    /**
+    **
+    **/
+    protected  virtual  void
+    raiseCanExecuteChanged()
+    {
+        this.m_runModelTaskCommand.RaiseCanExecuteChanged();
+        this.m_clearTextCommand.RaiseCanExecuteChanged();
+    }
 
     //----------------------------------------------------------------
     /**
