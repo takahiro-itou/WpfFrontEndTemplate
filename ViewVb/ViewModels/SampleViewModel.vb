@@ -1,7 +1,7 @@
 ﻿
 Imports System.ComponentModel
 Imports System.Runtime.CompilerServices
-Imports System.Thrading.Tasks
+Imports System.Threading.Tasks
 Imports System.Windows.Input
 
 Imports ViewVb.Commands
@@ -12,6 +12,13 @@ Namespace Global.ViewVb.ViewModels
 
 Public Class SampleViewModel
         Implements INotifyPropertyChanged
+
+Private ReadOnly m_progress As System.IProgress(Of Integer)
+Private ReadOnly m_trgModel As SampleModel
+
+Private ReadOnly m_runModelTaskCommand As SimpleCommand
+
+Private m_returnCode As Integer
 
 
 Public Sub New(ByVal model As SampleModel)
@@ -115,19 +122,6 @@ Protected Overridable Sub updateProgress(
         ByVal progressValue As Integer)
 
 End Sub
-
-
-''========================================================================
-''
-''    Member Variables.
-''
-
-Private ReadOnly m_progress As System.IProgress(Of Integer)
-Private ReadOnly m_trgModel As SampleModel
-
-Private ReadOnly m_runModelTaskCommand As SimpleCommand
-
-Private m_returnCode As Integer
 
 
 End Class
