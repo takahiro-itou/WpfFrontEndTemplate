@@ -21,6 +21,9 @@
         <MenuItem Header="Run _Command"
             Command="{Binding RunModelTaskCommand}"
         />
+        <MenuItem Header="Clear Text"
+            Command="{Binding ClearTextCommand}"
+        />
       </MenuItem>
     </Menu>
 
