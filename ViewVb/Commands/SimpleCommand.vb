@@ -38,7 +38,7 @@ Public Event CanExecuteChanged As EventHandler _
         Implements ICommand.CanExecuteChanged
 
 
-Public Sub raiseCanExecuteChanged())
+Public Sub raiseCanExecuteChanged()
     RaiseEvent CanExecuteChanged(Me, EventArgs.Empty)
 End Sub
 
