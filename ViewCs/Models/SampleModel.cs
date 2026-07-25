@@ -34,11 +34,20 @@ public  class  SampleModel
     public  virtual  int
     executeCommand(IProgress<int>  progress)
     {
-        string  output = "Hello, World";
-        for ( int i = 0; i < output.Length; ++ i ) {
-            this.ResultText += output[i];
-            progress.Report(0);
-            System.Threading.Thread.Sleep(1000);
+        using (var process = new System.Diagnostics.Process()) {
+            process.StartInfo.FileName = "ipconfig.exe";
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardInput = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.RedirectStandardError = false;
+            process.Start();
+
+            System.IO.StreamReader reader = process.StandardOutput
+            string  output  = reader.ReadToEnd()
+
+            this.ResultText = output;
+            process.WaitForExit();
+            process.Close();
         }
 
         progress.Report(100);
