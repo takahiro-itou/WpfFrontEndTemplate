@@ -179,6 +179,7 @@ public  class  SampleViewModel : INotifyPropertyChanged
     private  readonly   SampleModel             m_trgModel;
 
     private  readonly   SimpleCommand           m_runModelTaskCommand;
+    private  readonly   SimpleCommand           m_clearTextCommand;
 
     private  int    m_returnCode;
     private  bool   m_isRunning;
