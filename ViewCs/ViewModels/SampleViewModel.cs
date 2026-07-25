@@ -17,7 +17,7 @@ public  class  SampleViewModel : INotifyPropertyChanged
     /**   コンストラクタ。
     **
     **/
-    public SimpleCommand()
+    public SampleViewModel()
     {
     }
 

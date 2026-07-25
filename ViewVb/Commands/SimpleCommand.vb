@@ -24,7 +24,7 @@ End Sub
 
 
 Public Function CanExecute(parameter As Object) As Boolean _
-        Implements IComand.CanExecute
+        Implements ICommand.CanExecute
     Return If(m_canExecute Is Nothing, True, m_canExecute(parameter))
 End Function
 
