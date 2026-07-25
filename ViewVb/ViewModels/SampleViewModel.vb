@@ -17,6 +17,7 @@ Private ReadOnly m_progress As System.IProgress(Of Integer)
 Private ReadOnly m_trgModel As SampleModel
 
 Private ReadOnly m_runModelTaskCommand As SimpleCommand
+Private ReadOnly m_ClearTextCommand As SimpleCommand
 
 Private m_returnCode As Integer
 Private m_isRunning As Boolean
@@ -121,10 +122,10 @@ End Function
 Public Overridable Sub clearText()
    Me.ResultText = ""
    Me.ReturnCode = 0
-End Function
+End Sub
 
 
-Public Overrisable Async Sub runModelTaskAsync()
+Public Overridable Async Sub runModelTaskAsync()
 ''--------------------------------------------------------------------
 ''    モデルのタスクを非同期で実行する。
 ''--------------------------------------------------------------------
