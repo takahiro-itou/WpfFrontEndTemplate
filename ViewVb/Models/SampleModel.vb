@@ -19,23 +19,31 @@ Public Property ResultText() As String
 End Property
 
 
-Public Overridable Function runTask(
+Public Overridable Function executeCommand(
         ByVal progress As IProgress(Of Integer) ) As Integer
 ''--------------------------------------------------------------------
 ''    モデルのタスクを実行する。
 ''--------------------------------------------------------------------
-    executeCommand()
-    runTask = 0
+
+    Using process As New System.Diagnostics.Process()
+        process.StartInfo.FileName = "ipconfig.exe"
+        process.StartInfo.UseShellExecute = False
+        process.StartInfo.RedirectStandardInput = False
+        process.StartInfo.RedirectStandardOutput = True
+        process.StartInfo.RedirectStandardError = False
+        process.Start()
+
+        Dim Reader As System.IO.StreamReader = process.StandardOutput
+        Dim output As String = Reader.ReadToEnd()
+
+        Me.ResultText = output
+        process.WaitForExit()
+        process.Close()
+    End Using
+
+    progress.Report(100)
+    executeCommand = 0
 End Function
-
-
-Protected Overridable Sub executeCommand()
-''--------------------------------------------------------------------
-''    指定したコマンドを実行する
-''--------------------------------------------------------------------
-    Me.ResultText = "Hello, World"
-    System.Threading.Thread.Sleep(5000)
-End Sub
 
 
 End Class

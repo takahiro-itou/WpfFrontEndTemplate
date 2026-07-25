@@ -32,9 +32,25 @@ public  class  SampleModel
     **
     **/
     public  virtual  int
-    runTask(IProgress<int>  progress)
+    executeCommand(IProgress<int>  progress)
     {
-        executeCommand();
+        using (var process = new System.Diagnostics.Process()) {
+            process.StartInfo.FileName = "ipconfig.exe";
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardInput = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.RedirectStandardError = false;
+            process.Start();
+
+            System.IO.StreamReader reader = process.StandardOutput;
+            string  output  = reader.ReadToEnd();
+
+            this.ResultText = output;
+            process.WaitForExit();
+            process.Close();
+        }
+
+        progress.Report(100);
         return ( 0 );
     }
 
@@ -55,18 +71,6 @@ public  class  SampleModel
 //
 //    Protected Member Functions.
 //
-
-    //----------------------------------------------------------------
-    /**   指定したコマンドを実行する。
-    **
-    **/
-    protected  virtual  void
-    executeCommand()
-    {
-        this.ResultText = "Hello, World";
-        System.Threading.Thread.Sleep(5000);
-    }
-
 
 //========================================================================
 //
