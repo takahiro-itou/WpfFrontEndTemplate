@@ -1,6 +1,8 @@
 ﻿
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 using ViewCs.Commands;
 using ViewCs.Models;
@@ -23,7 +25,7 @@ public  class  SampleViewModel : INotifyPropertyChanged
     public SampleViewModel(
             SampleModel model)
     {
-        this.m_progress = new Progress<int>(updateProgress);
+        this.m_progress = new System.Progress<int>(updateProgress);
         this.m_trgModel = model;
 
         this.m_runTaskCommand   = new SimpleCommand(
@@ -123,10 +125,10 @@ public  class  SampleViewModel : INotifyPropertyChanged
 //    Member Variables.
 //
 
-    private  readonly   IProgress<int>  m_progress;
-    private  readonly   SampleModel     m_trgModel;
+    private  readonly   System.IProgress<int>   m_progress;
+    private  readonly   SampleModel             m_trgModel;
 
-    private  readonly   SimpleCommand   m_runTaskCommand;
+    private  readonly   SimpleCommand           m_runTaskCommand;
 
     private  int    m_returnCode;
 

@@ -1,6 +1,8 @@
 ﻿
 Imports System.ComponentModel
 Imports System.Runtime.CompilerServices
+Imports System.Treateding.Tasks
+Imports System.Windows.Input
 
 Imports ViewVb.Commands
 Imports ViewVb.Models
@@ -17,7 +19,7 @@ Public Sub New(ByVal model As SampleModel)
 ''    コンストラクタ
 ''--------------------------------------------------------------------
 
-    Me.m_progress = New Progress(Of Integer)(AddressOf updateProgress)
+    Me.m_progress = New System.Progress(Of Integer)(AddressOf updateProgress)
     Me.m_trgModel = model
 
     Me.m_runTaskCommand = New SimpleCommand(
@@ -25,9 +27,10 @@ Public Sub New(ByVal model As SampleModel)
             Me.runModelTaskAsync
         End Sub,
         Function(ByVal parameter As Object) As Boolean
-            Return  Me.m_canRunTask()
+            Return  Me.canRunTask()
         End Function
     )
+    Me.m_returnCode = 0
 End Sub
 
 
@@ -66,7 +69,7 @@ End Property
 ''
 
 Public Function canRunTask() As Boolean
-    Return True
+    Return  True
 End Function
 
 
@@ -112,7 +115,7 @@ End Sub
 ''    Member Variables.
 ''
 
-Private ReadOnly m_progress As IProgress(Of Integer)
+Private ReadOnly m_progress As System.IProgress(Of Integer)
 Private ReadOnly m_trgModel As SampleModel
 
 Private ReadOnly m_runTaskCommand As SimpleCommand
