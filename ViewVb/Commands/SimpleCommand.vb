@@ -1,4 +1,5 @@
 ﻿
+Imports System
 Imports System.Windows.Input
 
 
@@ -23,7 +24,7 @@ End Sub
 
 
 Public Function CanExecute(parameter As Object) As Boolean _
-        Implements IComand.CanExecute
+        Implements ICommand.CanExecute
     Return If(m_canExecute Is Nothing, True, m_canExecute(parameter))
 End Function
 
@@ -37,7 +38,7 @@ Public Event CanExecuteChanged As EventHandler _
         Implements ICommand.CanExecuteChanged
 
 
-Public Sub raiseCanExecuteChanged())
+Public Sub raiseCanExecuteChanged()
     RaiseEvent CanExecuteChanged(Me, EventArgs.Empty)
 End Sub
 
