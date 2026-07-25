@@ -45,14 +45,16 @@
           Visibility="{Binding IsRunning, Converter={StaticResource Bool2Visible}, Mode=OneWay}"
           IsIndeterminate="True"
       />
-      <TextBox x:Name="txtOutput"
+      <TextBox
           Margin="8,8,8,8" Height="320"
-          IsEnabled="False"
+          IsReadOnly="True"
           Text="{Binding ResultText, Mode=OneWay}"
+          HorizontalScrollBarVisibility="Auto"
+          VerticalScrollBarVisibility="Visible"
       />
       <TextBox
           Margin="8,8,8,8"
-          IsEnabled="False"
+          IsReadOnly="True"
           Text="{Binding ReturnCode, StringFormat='Return Code : {0}', Mode=OneWay}"
       />
     </StackPanel>

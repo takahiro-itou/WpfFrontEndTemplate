@@ -42,8 +42,8 @@ public  class  SampleModel
             process.StartInfo.RedirectStandardError = false;
             process.Start();
 
-            System.IO.StreamReader reader = process.StandardOutput
-            string  output  = reader.ReadToEnd()
+            System.IO.StreamReader reader = process.StandardOutput;
+            string  output  = reader.ReadToEnd();
 
             this.ResultText = output;
             process.WaitForExit();
