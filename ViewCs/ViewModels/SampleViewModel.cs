@@ -29,7 +29,14 @@ public  class  SampleViewModel : INotifyPropertyChanged
         this.m_trgModel = model;
 
         this.m_runModelTaskCommand  = new SimpleCommand(
-                _ => runModelTaskAsync(), _ => canRunTask() );
+                _ => runModelTaskAsync(),
+                _ => canRunTask()
+        );
+        this.m_clearTextCommand     = new SimpleCommand(
+                _ => clearText(),
+                _ => ! this.IsRunning
+        );
+
         this.m_returnCode   = 0;
         this.m_isRunning    = false;
     }
@@ -75,6 +82,11 @@ public  class  SampleViewModel : INotifyPropertyChanged
         }
     }
 
+    public  virtual  ICommand
+    ClearTextCommand {
+        get { return  this.m_clearTextCommand; }
+    }
+
     //----------------------------------------------------------------
     /**   タスクを実行するコマンドを取得するプロパティ。
     **
@@ -97,7 +109,18 @@ public  class  SampleViewModel : INotifyPropertyChanged
     public  virtual  bool
     canRunTask()
     {
-        return ( true );
+        return ( ! this.IsRunning );
+    }
+
+    //----------------------------------------------------------------
+    /**
+    **
+    **/
+    public  virtual  void
+    clearText()
+    {
+        this.ResultText = "";
+        this.ReturnCode = 0;
     }
 
     //----------------------------------------------------------------
@@ -110,11 +133,10 @@ public  class  SampleViewModel : INotifyPropertyChanged
         this.IsRunning  = true;
 
         Task<int>  task = Task.Run<int>(
-            () => this.m_trgModel.runTask(this.m_progress));
+            () => this.m_trgModel.executeCommand(this.m_progress));
         int  result = await task;
 
         this.ReturnCode = result;
-        this.ResultText = this.m_trgModel.ResultText;
         this.IsRunning  = false;
     }
 
@@ -144,7 +166,7 @@ public  class  SampleViewModel : INotifyPropertyChanged
     protected  virtual  void
     updateProgress(int progressValue)
     {
-        this.ResultText = this.m_trgModel.ResultText;
+        raisePropertyChanged(nameof(ResultText));
     }
 
 
@@ -157,6 +179,7 @@ public  class  SampleViewModel : INotifyPropertyChanged
     private  readonly   SampleModel             m_trgModel;
 
     private  readonly   SimpleCommand           m_runModelTaskCommand;
+    private  readonly   SimpleCommand           m_clearTextCommand;
 
     private  int    m_returnCode;
     private  bool   m_isRunning;

@@ -19,23 +19,25 @@ Public Property ResultText() As String
 End Property
 
 
-Public Overridable Function runTask(
+Public Overridable Function executeCommand(
         ByVal progress As IProgress(Of Integer) ) As Integer
 ''--------------------------------------------------------------------
 ''    モデルのタスクを実行する。
 ''--------------------------------------------------------------------
-    executeCommand()
-    runTask = 0
+Dim i As Integer
+Dim output As String
+
+    output = "Hello, World"
+
+    For i = 1 To Len(output)
+        Me.ResultText = Me.ResultText & Mid(output, i, 1)
+        progress.Report(0)
+        System.Threading.Thread.Sleep(1000)
+    Next i
+
+    progress.Report(100)
+    executeCommand = 0
 End Function
-
-
-Protected Overridable Sub executeCommand()
-''--------------------------------------------------------------------
-''    指定したコマンドを実行する
-''--------------------------------------------------------------------
-    Me.ResultText = "Hello, World"
-    System.Threading.Thread.Sleep(5000)
-End Sub
 
 
 End Class

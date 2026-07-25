@@ -17,6 +17,7 @@ Private ReadOnly m_progress As System.IProgress(Of Integer)
 Private ReadOnly m_trgModel As SampleModel
 
 Private ReadOnly m_runModelTaskCommand As SimpleCommand
+Private ReadOnly m_ClearTextCommand As SimpleCommand
 
 Private m_returnCode As Integer
 Private m_isRunning As Boolean
@@ -38,6 +39,15 @@ Public Sub New(ByVal model As SampleModel)
             Return  Me.canRunTask()
         End Function
     )
+    Me.m_clearTextCommand = New SimpleCommand(
+        Sub(ByVal parameter As Object)
+            Me.clearText()
+        End Sub,
+        Function(ByVal parameter As Object) As Boolean
+            Return  Not Me.IsRunning
+        End Function
+    )
+
     Me.m_returnCode = 0
     Me.m_isRunning  = False
 End Sub
@@ -85,6 +95,13 @@ Public Property ReturnCode() As Integer
 End Property
 
 
+Public Overridable ReadOnly Property ClearTextCommand() As ICommand
+    Get
+        Return  Me.m_clearTextCommand
+    End Get
+End Property
+
+
 Public Overridable ReadOnly Property RunModelTaskCommand() As ICommand
     Get
         Return  Me.m_runModelTaskCommand
@@ -98,11 +115,17 @@ End Property
 ''
 
 Public Function canRunTask() As Boolean
-    Return  True
+    Return  Not Me.IsRunning
 End Function
 
 
-Public Async Sub runModelTaskAsync
+Public Overridable Sub clearText()
+   Me.ResultText = ""
+   Me.ReturnCode = 0
+End Sub
+
+
+Public Overridable Async Sub runModelTaskAsync()
 ''--------------------------------------------------------------------
 ''    モデルのタスクを非同期で実行する。
 ''--------------------------------------------------------------------
@@ -113,13 +136,12 @@ Dim myTask As Task(Of Integer)
 
     mytask = Task.Run(Of Integer)(
         Function() As Integer
-            Return  Me.m_trgModel.runTask(Me.m_progress)
+            Return  Me.m_trgModel.executeCommand(Me.m_progress)
         End Function
     )
     result  = await mytask
 
     Me.ReturnCode = result
-    Me.ResultText = Me.m_trgModel.ResultText
     Me.IsRunning  = False
 End Sub
 
@@ -139,7 +161,7 @@ End Sub
 
 Protected Overridable Sub updateProgress(
         ByVal progressValue As Integer)
-
+    raisePropertyChanged(nameof(ResultText))
 End Sub
 
 
