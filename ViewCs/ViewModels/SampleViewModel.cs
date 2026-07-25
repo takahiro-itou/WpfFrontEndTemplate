@@ -49,7 +49,7 @@ public  class  SampleViewModel : INotifyPropertyChanged
     public  bool
     IsRunning  {
         get { return  this.m_isRunning; }
-        private set [
+        private set {
             this.m_isRunning = value;
             raisePropertyChanged();
         }
