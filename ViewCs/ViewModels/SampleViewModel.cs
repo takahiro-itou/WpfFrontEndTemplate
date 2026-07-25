@@ -2,6 +2,9 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
+using ViewCs.Commands;
+using ViewCs.Models;
+
 
 namespace  ViewCs.ViewModels  {
 
@@ -17,8 +20,13 @@ public  class  SampleViewModel : INotifyPropertyChanged
     /**   コンストラクタ。
     **
     **/
-    public SampleViewModel()
+    public SampleViewModel(
+            SampleModel model)
     {
+        this.m_trgModel = model;
+
+        this.m_runTaskCommand   = new SimpleCommand(
+                _ => runModelTaskAsync(), _ => canRunTask() );
     }
 
 
@@ -32,6 +40,31 @@ public  class  SampleViewModel : INotifyPropertyChanged
     **
     **/
     public  event PropertyChangedEventHandler?  PropertyChanged;
+
+
+//========================================================================
+//
+//    Public Member Functions.
+//
+
+    //----------------------------------------------------------------
+    /**
+    **
+    **/
+    public  virtual  bool
+    canRunTask()
+    {
+        return ( true );
+    }
+
+    //----------------------------------------------------------------
+    /**
+    **
+    **/
+    public  async  void
+    runModelTaskAsync()
+    {
+    }
 
 
 //========================================================================
@@ -51,6 +84,13 @@ public  class  SampleViewModel : INotifyPropertyChanged
                 this, new PropertyChangedEventArgs(propertyName));
     }
 
+
+//========================================================================
+//
+//    Member Variables.
+//
+
+    private  readonly   SampleModel     m_trgModel;
 
 }   //  End class  SampleViewModel
 
