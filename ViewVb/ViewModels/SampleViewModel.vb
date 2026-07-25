@@ -19,6 +19,7 @@ Private ReadOnly m_trgModel As SampleModel
 Private ReadOnly m_runModelTaskCommand As SimpleCommand
 
 Private m_returnCode As Integer
+Private m_isRunning As Boolean
 
 
 Public Sub New(ByVal model As SampleModel)
@@ -38,6 +39,7 @@ Public Sub New(ByVal model As SampleModel)
         End Function
     )
     Me.m_returnCode = 0
+    Me.m_isRunning  = False
 End Sub
 
 
@@ -50,12 +52,24 @@ Public Event PropertyChanged As PropertyChangedEventHandler _
         Implements INotifyPropertyChanged.PropertyChanged
 
 
+Public Property IsRunning() As Boolean
+    Get
+        Return  Me.m_isRunning
+    End Get
+    Private Set(ByVal value As Boolean)
+        Me.m_isRunning = value
+        raisePropertyChanged()
+    End Set
+End Property
+
+
 Public Property ResultText() As String
     Get
         Return  Me.m_trgModel.ResultText
     End Get
     Set(ByVal value As String)
         Me.m_trgModel.ResultText = value
+        raisePropertyChanged()
     End Set
 End Property
 
@@ -66,6 +80,7 @@ Public Property ReturnCode() As Integer
     End Get
     Private Set(ByVal value As Integer)
         Me.m_returnCode = value
+        raisePropertyChanged()
     End Set
 End Property
 
@@ -94,14 +109,18 @@ Public Async Sub runModelTaskAsync
 Dim result As Integer
 Dim myTask As Task(Of Integer)
 
+    Me.IsRunning  = True
+
     mytask = Task.Run(Of Integer)(
         Function() As Integer
             Return  Me.m_trgModel.runTask(Me.m_progress)
         End Function
     )
     result  = await mytask
+
     Me.ReturnCode = result
     Me.ResultText = Me.m_trgModel.ResultText
+    Me.IsRunning  = False
 End Sub
 
 

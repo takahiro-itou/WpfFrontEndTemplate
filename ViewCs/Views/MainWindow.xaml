@@ -6,7 +6,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:ViewCs"
     Title="MainWindow"
+    Height="480" Width="440"
 >
+  <Window.Resources>
+    <BooleanToVisibilityConverter x:Key="Bool2Visible" />
+  </Window.Resources>
+
   <DockPanel>
     <Menu DockPanel.Dock="Top">
       <MenuItem Header="_File">
@@ -31,6 +36,11 @@
           Content="Run"
           HorizontalAlignment="Left"
           Command="{Binding RunModelTaskCommand}"
+      />
+      <ProgressBar
+          Margin="8,8,8,8" Height="16"
+          Visibility="{Binding IsRunning, Converter={StaticResource Bool2Visible}, Mode=OneWay}"
+          IsIndeterminate="True"
       />
       <TextBox x:Name="txtOutput"
           Margin="8,8,8,8" Height="320"
