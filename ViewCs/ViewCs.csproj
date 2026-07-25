@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <Nullable>enable</Nullable>
     <OutputType>WinExe</OutputType>
     <Platforms>x64;x86</Platforms>
     <RootNamespace>ViewCs</RootNamespace>
@@ -16,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Commands\SimpleCommand.cs" />
+    <Compile Include="Models\SampleModel.cs" />
+    <Compile Include="ViewModels\SampleViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs" />
   </ItemGroup>
 
