@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:ViewVb"
     Title="MainWindow"
-    Height="480" Width="440"
+    Height="512" Width="440"
 >
   <Window.Resources>
     <BooleanToVisibilityConverter x:Key="Bool2Visible" />
@@ -19,7 +19,7 @@
       </MenuItem>
       <MenuItem Header="_Run">
         <MenuItem Header="Run _Command"
-          Command="{Binding RunModelTaskCommand}"
+            Command="{Binding RunModelTaskCommand}"
         />
       </MenuItem>
     </Menu>
@@ -44,7 +44,13 @@
       />
       <TextBox x:Name="txtOutput"
           Margin="8,8,8,8" Height="320"
-          Text="Outputs"
+          IsEnabled="False"
+          Text="{Binding ResultText Mode=OneWay}"
+      />
+      <TextBox
+          Margin="8,8,8,8"
+          IsEnabled="False"
+          Text="{Binding ReturnCode, StringFormat='Return Code : {0}' Mode=OneWay}"
       />
     </StackPanel>
   </DockPanel>
