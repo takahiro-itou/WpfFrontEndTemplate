@@ -69,6 +69,7 @@ Public Property IsRunning() As Boolean
     Private Set(ByVal value As Boolean)
         Me.m_isRunning = value
         raisePropertyChanged()
+        raiseCanExecuteChanged()
     End Set
 End Property
 
@@ -150,6 +151,12 @@ End Sub
 ''
 ''    Protected Member Functions.
 ''
+
+Protected Overridable Sub raiseCanExecuteChanged()
+    Me.m_runModelTaskCommand.RaiseCanExecuteChanged()
+    Me.m_clearTextCommand.RaiseCanExecuteChanged()
+End Sub
+
 
 Protected Overridable Sub raisePropertyChanged(
         <CallerMemberName> Optional propertyName As String = Nothing)

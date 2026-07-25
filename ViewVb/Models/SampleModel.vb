@@ -24,16 +24,22 @@ Public Overridable Function executeCommand(
 ''--------------------------------------------------------------------
 ''    モデルのタスクを実行する。
 ''--------------------------------------------------------------------
-Dim i As Integer
-Dim output As String
 
-    output = "Hello, World"
+    Using process As New System.Diagnostics.Process()
+        process.StartInfo.FileName = "ipconfig.exe"
+        process.StartInfo.UseShellExecute = False
+        process.StartInfo.RedirectStandardInput = False
+        process.StartInfo.RedirectStandardOutput = True
+        process.StartInfo.RedirectStandardError = False
+        process.Start()
 
-    For i = 1 To Len(output)
-        Me.ResultText = Me.ResultText & Mid(output, i, 1)
-        progress.Report(0)
-        System.Threading.Thread.Sleep(1000)
-    Next i
+        Dim Reader As System.IO.StreamReader = process.StandardOutput
+        Dim output As String = Reader.ReadToEnd()
+
+        Me.ResultText = output
+        process.WaitForExit()
+        process.Close()
+    End Using
 
     progress.Report(100)
     executeCommand = 0
