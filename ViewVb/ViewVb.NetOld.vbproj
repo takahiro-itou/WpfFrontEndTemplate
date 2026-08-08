@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Commands\SimpleCommand.vb" />
     <Compile Include="Models\SampleModel.vb" />
     <Compile Include="ViewModels\SampleViewModel.vb" />
     <Compile Include="Views\MainWindow.xaml.vb" />
