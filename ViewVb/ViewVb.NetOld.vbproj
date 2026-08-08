@@ -23,4 +23,8 @@
     <Compile Include="Views\MainWindow.xaml.vb" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+  </ItemGroup>
+
 </Project>
