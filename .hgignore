@@ -1,6 +1,11 @@
 
 syntax: glob
+
+Bin/
+Libs/
+Objs/
 Debug/
+
 Release/
 ipch/
 bin/
@@ -10,6 +15,7 @@ obj/
 *.suo
 
 syntax: regexp
+
 ^\.git/
 ^\.vs/
 ^Core/Lib/Tests/.git
