@@ -59,10 +59,10 @@ public  MainWindow()
 private  void
 MainWindow_Loaded(object sender, RoutedEventArgs e)
 {
-    string  customIcon  = Path.Combine(
+    string  customIcon  = System.IO.Path.Combine(
         AppDomain.CurrentDomain.BaseDirectory,
         "Resources", "MainWindow.ico");
-    if ( File.Exists(customIcon) ) {
+    if ( System.IO.File.Exists(customIcon) ) {
         try {
             this.Icon = new BitmapImage(
                     new Uri(customIcon, UriKind.Absolute));
@@ -70,7 +70,7 @@ MainWindow_Loaded(object sender, RoutedEventArgs e)
             System.Diagnostics.Debug.WriteLine(
                 $"Failed custom icon: {ex.Message}");
         }
-    ]
+    }
 }
 
 //========================================================================
