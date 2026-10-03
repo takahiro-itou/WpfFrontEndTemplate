@@ -14,7 +14,7 @@
 
 using   System;
 using   System.Windows;
-using   System.Windows.Imaging;
+using   System.Windows.Media.Imaging;
 
 using   ViewCs;
 
