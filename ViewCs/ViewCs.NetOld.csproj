@@ -3,10 +3,13 @@
 
   <PropertyGroup>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
     <OutputType>WinExe</OutputType>
     <Platforms>x64;x86;Any CPU</Platforms>
-    <RootNamespace>ViewVb</RootNamespace>
+    <RootNamespace>ViewCs</RootNamespace>
     <TargetFrameworks>
+      net45;
       net48;
     </TargetFrameworks>
     <UseWPF>true</UseWPF>
@@ -20,9 +23,5 @@
   </ItemGroup>
 
   <Import Project="Targets.props" />
-
-  <ItemGroup>
-    <Reference Include="mscorlib" />
-  </ItemGroup>
 
 </Project>

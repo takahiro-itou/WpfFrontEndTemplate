@@ -5,7 +5,7 @@
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <Nullable>enable</Nullable>
     <OutputType>WinExe</OutputType>
-    <Platforms>x64;x86</Platforms>
+    <Platforms>x64;x86;Any CPU</Platforms>
     <RootNamespace>ViewCs</RootNamespace>
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
@@ -13,14 +13,11 @@
 
   <Import Project="..\Props\OutputApps.props" />
 
+  <Import Project="..\Props\CustomIcons.props" />
+
   <ItemGroup>
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="Commands\SimpleCommand.cs" />
-    <Compile Include="Models\SampleModel.cs" />
-    <Compile Include="ViewModels\SampleViewModel.cs" />
-    <Compile Include="Views\MainWindow.xaml.cs" />
-  </ItemGroup>
+  <Import Project="Targets.props" />
 
 </Project>

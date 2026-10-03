@@ -1,9 +1,9 @@
-﻿//  -*-  coding: utf-8-with-signature;  mode: c++  -*-  //
+﻿//  -*-  coding: utf-8-with-signature-unix     -*-  //
 /*************************************************************************
 **                                                                      **
-**                  ---  WPF UserControl Library.  ---                  **
+**                    ---  WPF Template Project  ---                    **
 **                                                                      **
-**          Copyright (C), 2026-2026, Takahiro Itou                     **
+**          Copyright (C), 2025-2026, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING or LICENSE files)                     **
@@ -12,9 +12,9 @@
 **                                                                      **
 *************************************************************************/
 
-using System;
-using System.ComponentModel;
-using System.Windows.Input;
+using   System;
+using   System.ComponentModel;
+using   System.Windows.Input;
 
 
 namespace  ViewCs.Commands  {
