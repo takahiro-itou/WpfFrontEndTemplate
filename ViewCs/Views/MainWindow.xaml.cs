@@ -1,7 +1,22 @@
-﻿
-using System.Windows;
+﻿//  -*-  coding: utf-8-with-signature-unix     -*-  //
+/*************************************************************************
+**                                                                      **
+**                    ---  WPF Template Project  ---                    **
+**                                                                      **
+**          Copyright (C), 2025-2026, Takahiro Itou                     **
+**          All Rights Reserved.                                        **
+**                                                                      **
+**          License: (See COPYING or LICENSE files)                     **
+**          GNU Affero General Public License (AGPL) version 3,         **
+**          or (at your option) any later version.                      **
+**                                                                      **
+*************************************************************************/
 
-using ViewCs;
+using   System;
+using   System.Windows;
+using   System.Windows.Imaging;
+
+using   ViewCs;
 
 
 namespace  ViewCs.Views  {
@@ -46,7 +61,7 @@ MainWindow_Loaded(object sender, RoutedEventArgs e)
 {
     string  customIcon  = Path.Combine(
         AppDomain.CurrentDomain.BaseDirectory,
-        "Resources\MainWindow.ico");
+        "Resources", "MainWindow.ico");
     if ( File.Exists(customIcon) ) {
         try {
             this.Icon = new BitmapImage(
