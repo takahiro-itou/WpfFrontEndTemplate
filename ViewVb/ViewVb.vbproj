@@ -4,7 +4,7 @@
   <PropertyGroup>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <OutputType>WinExe</OutputType>
-    <Platforms>x64;x86</Platforms>
+    <Platforms>x64;x86;Any CPU</Platforms>
     <RootNamespace>ViewVb</RootNamespace>
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
@@ -12,14 +12,11 @@
 
   <Import Project="..\Props\OutputApps.props" />
 
+  <Import Project="..\Props\CustomIcons.props" />
+
   <ItemGroup>
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="Commands\SimpleCommand.vb" />
-    <Compile Include="Models\SampleModel.vb" />
-    <Compile Include="ViewModels\SampleViewModel.vb" />
-    <Compile Include="Views\MainWindow.xaml.vb" />
-  </ItemGroup>
+  <Import Project="Targets.props" />
 
 </Project>

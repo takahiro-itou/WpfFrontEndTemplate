@@ -1,6 +1,10 @@
 
 /.hg
 
+/Bin/
+/Libs/
+/Objs/
+
 Debug/
 Release/
 ipch/
